@@ -1,1 +1,1 @@
-Bońć mondrym człowiekiem
+Bądź mądrym człowiekiem
