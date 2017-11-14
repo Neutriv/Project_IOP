@@ -1,0 +1,1 @@
+Bońć mondrym człowiekiem
