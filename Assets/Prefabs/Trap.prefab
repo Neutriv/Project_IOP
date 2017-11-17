@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212466068378634222}
   - component: {fileID: 95395410185679086}
   - component: {fileID: 135190231632582478}
+  - component: {fileID: 114599058150156474}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -123,6 +124,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114599058150156474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129570721694548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c439424743027034aa580435709f0320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  radius: 5
+  power: 10
+  center: {fileID: 0}
 --- !u!135 &135190231632582478
 SphereCollider:
   m_ObjectHideFlags: 1
