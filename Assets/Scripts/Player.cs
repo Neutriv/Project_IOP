@@ -45,8 +45,6 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector3.right * 0.1f);
         }
-
-
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
                || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             animator.SetBool("Run", true);
