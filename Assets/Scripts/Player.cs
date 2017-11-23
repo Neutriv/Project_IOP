@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
-    
+    public int numberOfBullets;
     // Use this for initialization
     void Start()
     {
@@ -52,6 +52,10 @@ public class Player : MonoBehaviour
 
    void Shoot()
     {
-        Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+        if (numberOfBullets != 0)
+        {
+            numberOfBullets--;
+            Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+        }
     }
 }
