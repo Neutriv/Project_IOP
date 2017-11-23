@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
+    public int numberOfBullets;
 
     // Use this for initialization
     void Start()
@@ -44,8 +45,6 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector3.right * 0.1f);
         }
-
-
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
                || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             animator.SetBool("Run", true);
@@ -67,6 +66,10 @@ public class Player : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+        if (numberOfBullets != 0)
+        {
+            numberOfBullets--;
+            Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+        }
     }
 }
