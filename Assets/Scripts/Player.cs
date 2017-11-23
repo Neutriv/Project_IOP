@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     public GameObject gun;
     public int numberOfBullets;
+
     // Use this for initialization
     void Start()
     {
@@ -28,12 +29,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * 0.1f);
+        }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.DownArrow) 
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
                || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            animator.SetBool("Run",true);
+            animator.SetBool("Run", true);
 
         else
             animator.SetBool("Run", false);
@@ -50,7 +66,7 @@ public class Player : MonoBehaviour
         myRig.velocity = moveVelocity;
     }
 
-   void Shoot()
+    void Shoot()
     {
         if (numberOfBullets != 0)
         {
