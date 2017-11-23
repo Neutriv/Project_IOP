@@ -250,7 +250,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1102245179926244, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_Name
-      value: Playerasd
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114899396675013988, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
