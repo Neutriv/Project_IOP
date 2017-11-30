@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135190231632582478}
   m_Layer: 0
   m_Name: Trap
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,8 +137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 95395410185679086}
   player: {fileID: 1102245179926244, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
-  radius: 100
-  power: 5000
+  playe: {fileID: 0}
+  radius: 99.63
+  power: 2500
   center: {fileID: 1940793574023118}
 --- !u!135 &135190231632582478
 SphereCollider:
