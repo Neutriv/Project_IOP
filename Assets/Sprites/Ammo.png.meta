@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 30895eb89c706c84b94bd63293cea739
-timeCreated: 1510052159
+timeCreated: 1512033066
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Ammo_0
+    21300002: Ammo_1
+    21300004: Ammo_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -97,6 +99,34 @@ TextureImporter:
         height: 16
       alignment: 9
       pivot: {x: 0.20960598, y: 0.20094925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ammo_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 34
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ammo_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 17
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
