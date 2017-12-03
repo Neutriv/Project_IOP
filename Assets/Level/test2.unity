@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swap: 0
-  current: {fileID: 0}
+  curr: {fileID: 0}
   ammoAmount: 10
 --- !u!65 &365474733
 BoxCollider:
@@ -353,7 +353,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4585361963721580, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4585361963721580, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -361,7 +361,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4585361963721580, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.648
       objectReference: {fileID: 0}
     - target: {fileID: 4585361963721580, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -443,8 +443,28 @@ Prefab:
     - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
         type: 2}
       propertyPath: numberOfBullets
-      value: 3
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: bulletSpawnPoint
+      value: 
+      objectReference: {fileID: 845357292}
+    - target: {fileID: 1681316861901720, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
+      propertyPath: m_Name
+      value: Sphere1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: nbullet
+      value: 
+      objectReference: {fileID: 1016841265753424, guid: 3a250fe55f2b40943a027b9227f955a6,
+        type: 2}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: ngun
+      value: 
+      objectReference: {fileID: 1122014505}
     m_RemovedComponents:
     - {fileID: 114899396675013988, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
@@ -786,6 +806,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a272b802f21a624096cb1ec83e5c3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeOfMagazine: 0
+  amountOfAmmo: 0
+  numberOfBullets: 0
+  range: 0
+  damage: 0
+  bullet: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  gun: {fileID: 0}
   amount: 5
 --- !u!212 &844705658
 SpriteRenderer:
@@ -1072,6 +1100,11 @@ Prefab:
     - {fileID: 54432253348885726, guid: b0f68b28b8874814db668b5f2a318507, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b0f68b28b8874814db668b5f2a318507, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1122014505 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1565082938236032, guid: ffb23dd459c64df42814fb6caea406d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 497225089}
 --- !u!1 &1149999330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swap: 0
-  current: {fileID: 0}
+  curr: {fileID: 0}
   ammoAmount: 10
 --- !u!65 &1662868803
 BoxCollider:
@@ -1907,6 +1940,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a272b802f21a624096cb1ec83e5c3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeOfMagazine: 0
+  amountOfAmmo: 0
+  numberOfBullets: 0
+  range: 0
+  damage: 0
+  bullet: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  gun: {fileID: 0}
   amount: 5
 --- !u!212 &1998279491
 SpriteRenderer:

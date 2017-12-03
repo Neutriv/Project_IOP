@@ -5,7 +5,7 @@ using UnityEngine;
 public class weaponSwap : MonoBehaviour
 {
     public bool swap = false;
-    public Sprite current;
+    public Sprite curr;
     private GameObject that;
     public int ammoAmount = 10;
     int ammo;
@@ -24,16 +24,16 @@ public class weaponSwap : MonoBehaviour
             {
                 GameObject Ammo_0 = GameObject.Find("Ammo_0");                                                      //jaka jest aktualna broń
                 GameObject Ammo_1 = that;                                                                           //broń na ziemi
-                current = Ammo_0.GetComponent<SpriteRenderer>().sprite;                                             //jaki ma wygląd aktualna broń
+                curr = Ammo_0.GetComponent<SpriteRenderer>().sprite;                                             //jaki ma wygląd aktualna broń
                 Ammo_0.GetComponent<SpriteRenderer>().sprite = Ammo_1.GetComponent<SpriteRenderer>().sprite;        //zamiana broni
-                Ammo_1.GetComponent<SpriteRenderer>().sprite = current;                                             //zostawienie broni na ziemi
+                Ammo_1.GetComponent<SpriteRenderer>().sprite = curr;                                             //zostawienie broni na ziemi
 
-
-                GameObject Player = GameObject.Find("Player");
-                Player player = Player.GetComponent<Player>();                                                      // Do przerobienia, system amunicji
-                ammo = player.numberOfBullets;
-                player.numberOfBullets = ammoAmount;
-                ammoAmount = ammo;
+                                                    // Do przerobienia, system amunicji
+                
+              //  ammo = Ammo_0.numberOfBullets;
+               // ammo = Ammo_0.GetComponentInChildren<bron1>
+              //  player.numberOfBullets = ammoAmount;
+             //   ammoAmount = ammo;
 
             }
         }

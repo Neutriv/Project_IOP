@@ -21,9 +21,9 @@ public class addAmmo : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            GameObject Player = GameObject.Find("Player");
-            Player player = Player.GetComponent<Player>();
-            player.numberOfBullets += amount;
+           // GameObject Player = GameObject.Find("Player");
+           // Player player = Player.GetComponent<Player>();
+            //numberOfBullets += amount;
             Destroy(gameObject);
 
           }

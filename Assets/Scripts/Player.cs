@@ -5,8 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject gunpoconiewiem;
-    public GameObject bullet;
-    public GameObject bulletSpawnPoint;
     public float waitTime;
     private Animator animator;
 
@@ -16,14 +14,18 @@ public class Player : MonoBehaviour
     private Vector3 moveInput;
     private Vector3 moveVelocity;
 
-    public GameObject gun;
-    public int numberOfBullets;
-
+    public GameObject nbullet;
+    //  public GameObject bulletSpawnPoint;
+    public GameObject ngun;
+    weapons bron;
+    //  public int numberOfBullets;
     // Use this for initialization
     void Start()
     {
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
+        bron = new rangedWeapons(nbullet, ngun);
+        bron.numberOfBullets = 20;
     }
 
     // Update is called once per frame
@@ -54,22 +56,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            bron.shoot();
         }
-
     }
 
     void FixedUpdate()
     {
         myRig.velocity = moveVelocity;
-    }
-
-    void Shoot()
-    {
-        if (numberOfBullets != 0)
-        {
-            numberOfBullets--;
-            Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
-        }
     }
 }
