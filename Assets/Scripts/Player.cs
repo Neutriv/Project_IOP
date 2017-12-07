@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
-
     // Use this for initialization
     void Start()
     {
@@ -28,23 +27,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        GameObject Obiekt = GameObject.Find("Player");
+        Dash dash = Obiekt.GetComponent<Dash>();
+    
+        
+        if (Input.GetKey(KeyCode.W) && dash.allowkey)
         {
             transform.Translate(Vector3.forward * 0.1f);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && dash.allowkey)
         {
             transform.Translate(Vector3.back * 0.1f);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && dash.allowkey)
         {
             transform.Translate(Vector3.left * 0.1f);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && dash.allowkey)
         {
             transform.Translate(Vector3.right * 0.1f);
         }
-
+        
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
                || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))

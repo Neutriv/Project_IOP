@@ -142,6 +142,51 @@ GameObject:
   m_PrefabParentObject: {fileID: 1102245179926244, guid: ffb23dd459c64df42814fb6caea406d2,
     type: 2}
   m_PrefabInternal: {fileID: 497225089}
+--- !u!114 &404820123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39aa1c2ac2738bd4cb89ffb99702248c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0.1
+  drawingGUI: 0
+  w: 0
+  a: 0
+  s: 0
+  d: 0
+  dash_w: 0
+  dash_a: 0
+  dash_s: 0
+  dash_d: 0
+  allowkey: 1
+--- !u!114 &404820124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f2f93f7aaa39a4993f338156517e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingGUI: 0
+  w: 0
+  a: 0
+  s: 0
+  d: 0
+  dash_w: 0
+  dash_a: 0
+  dash_s: 0
+  dash_d: 0
+  allowkey: 1
+  z: 10
+  wallDistance: 0
 --- !u!1001 &497225089
 Prefab:
   m_ObjectHideFlags: 0
@@ -236,6 +281,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4056145965561010, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54988957062808436, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
