@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int maxHp;
+    public int currentHp;
+    public bool isD;
+    public bool canBeDamaged = true;
     public GameObject gunpoconiewiem;
     public GameObject bullet;
     public GameObject bulletSpawnPoint;
@@ -21,6 +25,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        currentHp = maxHp;
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
     }
@@ -28,11 +33,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * 0.1f);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * 0.1f);
+        }
+        
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.DownArrow) 
-               || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) 
+               || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             animator.SetBool("Run",true);
 
         else
@@ -43,15 +63,62 @@ public class Player : MonoBehaviour
             Shoot();
         }
 
+        if (isD == true)
+        {
+            if(canBeDamaged == true)
+                StartCoroutine(Wait());
+
+
+        }
+
     }
 
     void FixedUpdate()
     {
         myRig.velocity = moveVelocity;
+       
     }
 
    void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+    }
+
+    IEnumerator Wait()
+    {
+        
+        
+        currentHp--;
+        canBeDamaged = false;
+        yield return new WaitForSeconds(0.4f);
+
+        canBeDamaged = true;isD = false;
+        StopAllCoroutines();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("projectile"))
+        {
+            
+            if (isD != true)
+                isD = true;
+        }
+
+        if (other.CompareTag("Rival"))
+        {
+            
+            if (isD != true)
+                isD = true;
+        }
+
+        if (other.CompareTag("Trap"))
+        {
+
+            if (isD != true)
+                isD = true;
+        }
+
+
     }
 }
