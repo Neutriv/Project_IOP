@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerateWeapons : MonoBehaviour {
+    public Player player;
     public Sprite nsprite;
 
     SpriteRenderer spriteR;
@@ -13,9 +14,11 @@ public class GenerateWeapons : MonoBehaviour {
         // spriteR = gameObject.GetComponent<SpriteRenderer>();
         //sprites = Resources.Load<Sprite>("Ammo_2");
         //sprites = Resources.Load("Ammo") as Sprite;
-        sprites = Resources.LoadAll<Sprite>("Sprites");
-        Debug.Log(sprites);          //Teraz zwraca null  
-        Debug.Log(sprites.Length);   //Teraz zwraca 0
+       // sprites = Resources.LoadAll<Sprite>("Sprites");
+       // Debug.Log(sprites);          //Teraz zwraca null  
+       // Debug.Log(sprites.Length);   //Teraz zwraca 0
+
+
         CreateObjWeapon("Ammo_3", nsprite, new Vector3(-9, 1, -7));
        // CreateObjWeapon("Ammo_4", sprites, new Vector3(-9, 1, -8));       //Jak pobrać sprite z assetów?
         
@@ -31,7 +34,10 @@ public class GenerateWeapons : MonoBehaviour {
 
         GameObject objToSpawn = new GameObject(name);
         objToSpawn.AddComponent<BoxCollider>();
+        objToSpawn.GetComponent<BoxCollider>().isTrigger = true;
         objToSpawn.AddComponent<SpriteRenderer>();
+        objToSpawn.AddComponent<weaponSwap>();
+        objToSpawn.GetComponent<weaponSwap>().player =player;
         objToSpawn.GetComponent<SpriteRenderer>().sprite = sprite;
         objToSpawn.transform.parent = GameObject.Find("Weapons").transform;
         objToSpawn.transform.position = pos;
