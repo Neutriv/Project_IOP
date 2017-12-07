@@ -6,19 +6,20 @@ public class GenerateWeapons : MonoBehaviour {
     public Sprite nsprite;
 
     SpriteRenderer spriteR;
-    Sprite sprites;
+    Sprite[] sprites;
 
     // Use this for initialization
     void Start () {
-       // spriteR = gameObject.GetComponent<SpriteRenderer>();
+        // spriteR = gameObject.GetComponent<SpriteRenderer>();
         //sprites = Resources.Load<Sprite>("Ammo_2");
-        sprites = Resources.Load("Assets/Sprites/Ammo_2", typeof(Sprite)) as Sprite;
-       
+        //sprites = Resources.Load("Ammo") as Sprite;
+        sprites = Resources.LoadAll<Sprite>("Sprites");
+        Debug.Log(sprites);          //Teraz zwraca null  
+        Debug.Log(sprites.Length);   //Teraz zwraca 0
         CreateObjWeapon("Ammo_3", nsprite, new Vector3(-9, 1, -7));
-        //CreateObjWeapon("Ammo_4", sprites, new Vector3(-9, 1, -8));                             //Jak pobrać sprite z assetów?
+       // CreateObjWeapon("Ammo_4", sprites, new Vector3(-9, 1, -8));       //Jak pobrać sprite z assetów?
         
 
-        Debug.Log(sprites);
     }
 	
 	// Update is called once per frame
