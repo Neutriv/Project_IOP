@@ -15,6 +15,7 @@ public class weaponSwap : MonoBehaviour
     int ammo;
     weapons weapon;
     GameObject weaponsOnFloor;
+    Sprite sprite;
     // Use this for initialization
     void Start()
     {
@@ -22,7 +23,7 @@ public class weaponSwap : MonoBehaviour
         ngun = player.ngun;
         nsprite = GetComponent<SpriteRenderer>().sprite;
         weapon  = new Weapon1(nbullet, ngun, nsprite);
-
+    
     }
 
     // Update is called once per frame

@@ -20,6 +20,7 @@ public abstract class weapons
     }
     public weapons()
     {
+
     }
 
     public void addAmmo(int a)
@@ -67,7 +68,7 @@ public class rangedWeapons: weapons
             if (numberOfBullets != 0)
             {
                 numberOfBullets--;
-            Object.Instantiate(bullet.transform, gun.transform.position, gun.transform.rotation);
+            Object.Instantiate(bullet.transform, gun.transform.position, gun.transform.rotation);   //inny rodzaj strzelania?
             }
     }
 

@@ -162,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147051940}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 23.531, y: 34.582, z: -15.235}
+  m_LocalPosition: {x: 23.531, y: 34.582, z: -14.74}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 1451573949}
@@ -1440,6 +1440,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1451573949}
+  - component: {fileID: 1451573950}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -1462,6 +1463,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451573950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451573948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d2a25ff6fceda43a3bcb6edc98b84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nsprite: {fileID: 21300002, guid: 30895eb89c706c84b94bd63293cea739, type: 3}
 --- !u!1 &1482881829 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1655110155396004, guid: b0f68b28b8874814db668b5f2a318507,
