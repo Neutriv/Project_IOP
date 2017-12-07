@@ -15,17 +15,17 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject nbullet;
-    //  public GameObject bulletSpawnPoint;
     public GameObject ngun;
-    weapons bron;
+    public weapons bron;
+    public Sprite nsprite;
     //  public int numberOfBullets;
     // Use this for initialization
     void Start()
     {
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
-        bron = new rangedWeapons(nbullet, ngun);
-        bron.numberOfBullets = 20;
+        bron = new rangedWeapons(nbullet, ngun, nsprite);
+        bron.equip();
     }
 
     // Update is called once per frame
