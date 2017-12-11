@@ -9,6 +9,7 @@ TagManager:
   - Exit
   - projectile
   - Rival
+  - Ammo
   layers:
   - Default
   - TransparentFX

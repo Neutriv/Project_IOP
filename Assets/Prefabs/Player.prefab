@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dff491c382d7240b921f01f1edace3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
 --- !u!114 &114398245110179754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,11 +246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunpoconiewiem: {fileID: 1301978560526082}
-  bullet: {fileID: 1016841265753424, guid: 3a250fe55f2b40943a027b9227f955a6, type: 2}
-  bulletSpawnPoint: {fileID: 1681316861901720}
   waitTime: 0.2
   moveSpeed: 5
-  gun: {fileID: 1153259712754940}
+  nbullet: {fileID: 0}
+  ngun: {fileID: 0}
+  nsprite: {fileID: 0}
 --- !u!114 &114899396675013988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dff491c382d7240b921f01f1edace3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
 --- !u!212 &212384558602611212
 SpriteRenderer:
   m_ObjectHideFlags: 1
