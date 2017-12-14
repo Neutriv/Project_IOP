@@ -9,7 +9,9 @@ TagManager:
   - Exit
   - projectile
   - Rival
-  - Ammo
+  - playerProjectile
+  - Trap
+  - AI
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,10 @@ TagManager:
   - Floor
   - Exit
   - projectile
+  - Rival
+  - playerProjectile
+  - AI
+  - Trap
   layers:
   - Default
   - TransparentFX

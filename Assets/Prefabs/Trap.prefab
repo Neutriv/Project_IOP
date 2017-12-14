@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4173921809351718}
   - component: {fileID: 212466068378634222}
+  - component: {fileID: 114479323828625568}
   - component: {fileID: 95395410185679086}
   - component: {fileID: 135190231632582478}
-  - component: {fileID: 114599058150156474}
   m_Layer: 0
   m_Name: Trap
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114599058150156474
+--- !u!114 &114479323828625568
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -132,14 +132,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129570721694548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c439424743027034aa580435709f0320, type: 3}
+  m_Script: {fileID: 11500000, guid: d963aa0874a88964b958a454eb1c212d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  player: {fileID: 0}
-  radius: 5
-  power: 10
-  center: {fileID: 0}
+  anim: {fileID: 95395410185679086}
+  player: {fileID: 1102245179926244, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
+  playe: {fileID: 0}
+  radius: 99.63
+  power: 2500
+  center: {fileID: 1940793574023118}
 --- !u!135 &135190231632582478
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -191,7 +192,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.14, y: 0.14}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
