@@ -18,13 +18,16 @@ public class Player : MonoBehaviour
     public GameObject ngun;
     public weapons bron;
     public Sprite nsprite;
+
+
+    public Sprite[] sprites;
     //  public int numberOfBullets;
     // Use this for initialization
     void Start()
     {
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
-        bron = new rangedWeapons(nbullet, ngun, nsprite);
+        bron = new rangedWeapons(nbullet, ngun);
         bron.equip();
     }
 

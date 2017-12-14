@@ -228,7 +228,6 @@ MonoBehaviour:
   ngun: {fileID: 0}
   nsprite: {fileID: 0}
   swap: 0
-  curr: {fileID: 0}
 --- !u!65 &147051944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -360,6 +359,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4585361963721580, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.48
@@ -491,6 +495,24 @@ Prefab:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 30895eb89c706c84b94bd63293cea739,
+        type: 3}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: 30895eb89c706c84b94bd63293cea739,
+        type: 3}
+    - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
+        type: 2}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300004, guid: 30895eb89c706c84b94bd63293cea739,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114899396675013988, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ffb23dd459c64df42814fb6caea406d2, type: 2}
@@ -1475,7 +1497,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 404820118}
-  nsprite: {fileID: 21300002, guid: 30895eb89c706c84b94bd63293cea739, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 30895eb89c706c84b94bd63293cea739, type: 3}
+  - {fileID: 21300002, guid: 30895eb89c706c84b94bd63293cea739, type: 3}
+  - {fileID: 21300004, guid: 30895eb89c706c84b94bd63293cea739, type: 3}
 --- !u!1 &1482881829 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1655110155396004, guid: b0f68b28b8874814db668b5f2a318507,
@@ -1526,11 +1551,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 404820118}
-  nbullet: {fileID: 1016841265753424, guid: 3a250fe55f2b40943a027b9227f955a6, type: 2}
+  nbullet: {fileID: 1649571512649614, guid: e0c13f0e8de3a7046aaf0356ee5cec7a, type: 2}
   ngun: {fileID: 845357292}
   nsprite: {fileID: 0}
   swap: 0
-  curr: {fileID: 0}
 --- !u!65 &1662868803
 BoxCollider:
   m_ObjectHideFlags: 0
