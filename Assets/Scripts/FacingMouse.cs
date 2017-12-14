@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FacingMouse : MonoBehaviour {
-   //public GameObject camera;
+    public GameObject camera;
 	// Use this for initialization
 	void Start () {
 		
