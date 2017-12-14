@@ -8,16 +8,16 @@ public class GenerateWeapons : MonoBehaviour {
 
     SpriteRenderer spriteR;
     public Sprite[] sprites;
-    weapons weapon;
-    
+    public weapons[] generatedWeapons;
     // Use this for initialization
     void Start () {
-        rangedWeapons rW = new rangedWeapons(player.nbullet, player.ngun);
-        Weapon1 w1=new Weapon1(player.nbullet, player.ngun); 
-        Weapon2 w2=new Weapon2(player.nbullet, player.ngun); 
-        rW.create("Ammo_1", rW, new Vector3(-9, 1, -7));
+        rangedWeapons rW = new rangedWeapons();
+        Weapon1 w1=new Weapon1(); 
+        Weapon2 w2=new Weapon2();
+        generatedWeapons = new weapons[] { rW, w1, w2};
+        rW.create("Ammo_1", rW, new Vector3(-9, 1, -6));
         w1.create("Ammo_2", w1, new Vector3(-9, 1, -8));
-        w2.create("Ammo_3", w2, new Vector3(-9, 1, -9));
+        w2.create("Ammo_3", w2, new Vector3(-9, 1, -10));
 
 
     }

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public Sprite nsprite;
 
 
+    public int numberOfBullets = 10;
     public Sprite[] sprites;
     //  public int numberOfBullets;
     // Use this for initialization
@@ -27,8 +28,8 @@ public class Player : MonoBehaviour
     {
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
-        bron = new rangedWeapons(nbullet, ngun);
-        bron.equip();
+        bron = new rangedWeapons();
+       
     }
 
     // Update is called once per frame
@@ -58,8 +59,11 @@ public class Player : MonoBehaviour
             animator.SetBool("Run", false);
 
         if (Input.GetMouseButtonDown(0))
-        {
-            bron.shoot();
+        {   if (numberOfBullets > 0)
+            {
+                numberOfBullets--;
+                bron.shoot();
+            }
         }
     }
 

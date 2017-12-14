@@ -9,7 +9,7 @@ public class addAmmo : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            player.bron.addAmmo(amount);
+            player.numberOfBullets += 10;
             Destroy(gameObject);
 
           }

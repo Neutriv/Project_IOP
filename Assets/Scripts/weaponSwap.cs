@@ -5,25 +5,13 @@ using UnityEngine;
 public class weaponSwap : MonoBehaviour
 {
     public Player player;
-    public GameObject nbullet;
-    public GameObject ngun;
-    public Sprite nsprite;
 
+    public System.Type classType;
     public bool swap = false;
-  //  public Sprite curr;
     private GameObject that;
-    int ammo;
-    weapons weapon, w1;
-   // GameObject weaponsOnFloor;
-   // Sprite sprite;
     // Use this for initialization
     void Start()
-    {
-        //nbullet = player.nbullet;   //inny rodzaj amunicji?
-        ngun = player.ngun;
-        nsprite = GetComponent<SpriteRenderer>().sprite;
-        weapon  = new Weapon1(nbullet, ngun);
-    
+    {    
     }
 
     // Update is called once per frame
@@ -33,14 +21,8 @@ public class weaponSwap : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-               // w1 = player.bron;
-             //   player.bron = weapon;
-              //  weapon = w1;
-                w1.swap(player.bron, weapon);
-                GameObject Ammo_0 = GameObject.Find("Ammo_0");                                                      
-                GameObject Ammo_1 = that;                                                                           
-                Ammo_1.GetComponent<SpriteRenderer>().sprite = Ammo_0.GetComponent<SpriteRenderer>().sprite;            //zamiana grafiki broni 
-                player.bron.equip();
+                player.bron = System.Activator.CreateInstance(classType) as weapons;
+                player.bron.equip(that);
             }
         }
     }
@@ -65,4 +47,11 @@ public class weaponSwap : MonoBehaviour
 
         }
     }
+    void swapWeapon(weapons w1, weapons w2)
+    {
+        weapons w = w1;
+        w1 = w2;
+        w2 = w;
+    }
+
 }

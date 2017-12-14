@@ -7,14 +7,26 @@ public abstract class weapons
     public Player player;
     //public int sizeOfMagazine;
     public int amountOfAmmo;
-    public int numberOfBullets = 10;
     //public float range;
     //public float damage;
-    public GameObject bullet;
     public GameObject bulletSpawnPoint;
-    public GameObject gun;
-    public Sprite sprite;
     public Sprite[] sprites;
+
+    public System.Type classType;
+
+
+    private GameObject bullet;
+    public GameObject Bullet
+    { get; set; }
+
+    private GameObject gun;
+    public GameObject Gun
+    { get; set; }
+
+    private Sprite sprite;
+    public Sprite Sprite
+    { get; set; }
+
     virtual public void shoot()
     {
     }
@@ -24,25 +36,20 @@ public abstract class weapons
         GameObject Player = GameObject.Find("Player");
         player = Player.GetComponent<Player>();
         sprites = player.sprites;
-
+        Bullet = player.nbullet;
+        Gun = player.ngun;
     }
+    
 
-    public void addAmmo(int a)
-    {
-        numberOfBullets += a;
-    }
-
-    public void equip()
+    public void equip(GameObject w)
     {
         GameObject Ammo_0 = GameObject.Find("Ammo_0");
-        Ammo_0.GetComponent<SpriteRenderer>().sprite = sprite;
+        Sprite old = Ammo_0.GetComponent<SpriteRenderer>().sprite;
+        Ammo_0.GetComponent<SpriteRenderer>().sprite = w.GetComponent<SpriteRenderer>().sprite;
+        w.GetComponent<SpriteRenderer>().sprite = old;
+      
     }
-    public void swap(weapons w1, weapons w2)
-    {
-        weapons w = w1;
-        w1 = w2;
-        w2 = w;
-    }
+
     public void create(System.String name, weapons weapon, Vector3 pos)
     {
         GameObject objToSpawn = new GameObject(name);
@@ -51,7 +58,8 @@ public abstract class weapons
         objToSpawn.AddComponent<SpriteRenderer>();
         objToSpawn.AddComponent<weaponSwap>();
         objToSpawn.GetComponent<weaponSwap>().player = player;
-        objToSpawn.GetComponent<SpriteRenderer>().sprite = sprite;
+        objToSpawn.GetComponent<weaponSwap>().classType = weapon.GetType();
+        objToSpawn.GetComponent<SpriteRenderer>().sprite = weapon.Sprite;
         objToSpawn.transform.parent = GameObject.Find("Weapons").transform;
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = new Quaternion(90, 0, 0, 90);
@@ -64,20 +72,16 @@ public abstract class weapons
 
 public class rangedWeapons: weapons
 {
-    public rangedWeapons(GameObject nbullet, GameObject ngun)
+    public rangedWeapons()
     {
-        bullet = nbullet;
-        gun = ngun;
-        sprite = sprites[0];
-
+        Sprite = sprites[0];
     }
     override public void shoot()
     {
-            if (numberOfBullets != 0)
-            {
-                numberOfBullets--;
-            Object.Instantiate(bullet.transform, gun.transform.position, gun.transform.rotation);   //inny rodzaj strzelania?
-            }
+          
+                
+            Object.Instantiate(Bullet.transform, Gun.transform.position, Gun.transform.rotation);   //inny rodzaj strzelania?
+            
     }
 
 }
@@ -87,27 +91,18 @@ public class rangedWeapons: weapons
 public class Weapon1 : weapons
 {
     Quaternion bulletAngle;
-    public Weapon1(GameObject nbullet, GameObject ngun)
+    public Weapon1()
     {
-        bullet = nbullet;
-        gun = ngun;
-        sprite = sprites[1];
+        Sprite = sprites[1];
 
     }
     override public void shoot()
     {
-        if (numberOfBullets != 0)
-        {
-           // numberOfBullets--;
             for (int i = 0; i < 4; i++)
             {
-                /* ACCURACY */
-                //Player.bulletRot = Player.mouseRotation;
                 bulletAngle = Quaternion.Euler(new Vector3(0, (Random.Range(-12f, 12f)), 0));
-                // Make a bullet at the position of the player in the direction of                         the mouse
-                Object.Instantiate(bullet.transform, gun.transform.position, bulletAngle*gun.transform.rotation);
-            }
-           // Object.Instantiate(bullet.transform, gun.transform.position, gun.transform.rotation);
+                Object.Instantiate(Bullet.transform, Gun.transform.position, bulletAngle*Gun.transform.rotation);
+      
         }
     }
 }
@@ -115,19 +110,14 @@ public class Weapon1 : weapons
 
 public class Weapon2 : weapons
 {
-    public Weapon2(GameObject nbullet, GameObject ngun)
+    public Weapon2()
     {
-        bullet = nbullet;
-        gun = ngun;
-        sprite = sprites[2];
+        Sprite = sprites[2];
 
     }
     override public void shoot()
     {
-        if (numberOfBullets != 0)
-        {
-            numberOfBullets--;
-            Object.Instantiate(bullet.transform, gun.transform.position, gun.transform.rotation);
-        }
+            Object.Instantiate(Bullet.transform, Gun.transform.position, Gun.transform.rotation);
+     
     }
 }
