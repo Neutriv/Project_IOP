@@ -98,9 +98,9 @@ public class Weapon1 : weapons
     }
     override public void shoot()
     {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
-                bulletAngle = Quaternion.Euler(new Vector3(0, (Random.Range(-12f, 12f)), 0));
+                bulletAngle = Quaternion.Euler(new Vector3(0, (Random.Range(-22f, 22f)), 0));
                 Object.Instantiate(Bullet.transform, Gun.transform.position, bulletAngle*Gun.transform.rotation);
       
         }

@@ -353,7 +353,7 @@ Prefab:
     - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
         type: 2}
       propertyPath: numberOfBullets
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114398245110179754, guid: ffb23dd459c64df42814fb6caea406d2,
         type: 2}
