@@ -15,12 +15,14 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
     public bool dash_d = false;
     public bool allowkey = true;
 
+    private float x = 10f;
+
     public float z = 10f;
     private float timeStamp = 0f;
     private float coolDown = 2f;
     private float smooth = 1f;
 
-    public float wallDistance;
+
 
     // Use this for initialization
     void Start () {
@@ -89,7 +91,9 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Z))
+
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (timeStamp + coolDown <= Time.time)
             {
@@ -97,56 +101,83 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
                 timeStamp = Time.time;
             }
         }
-        /*
-        RaycastHit hit;
-        Ray landingRay = new Ray(transform.position, Vector3.left);
-        //Debug.DrawRay(transform.position, Vector3.left * deplymentHeight);
-        if(Physics.Raycast(landingRay, 1))
+
+        if (Input.GetKeyUp(KeyCode.Z))
         {
-                transform.Translate(Vector3.forward * (float)z);
+            drawingGUI = false;
         }
-        */
+            /*
+            RaycastHit hit;
+            Ray landingRay = new Ray(transform.position, Vector3.left);
+            //Debug.DrawRay(transform.position, Vector3.left * deplymentHeight);
+            if(Physics.Raycast(landingRay, 1))
+            {
+                    transform.Translate(Vector3.forward * (float)z);
+            }
+            */
 
 
-    }
+        }
 
     void OnGUI()
     {
         if (drawingGUI && w && dash_w)
         {
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
-            if (!Physics.Raycast(forwardRay, 10))
+            while (x > 1 && drawingGUI)
             {
-                transform.Translate(Vector3.forward * (float)z);
-                drawingGUI = false;
+                if (!Physics.Raycast(forwardRay, x))
+                {
+                    transform.Translate(Vector3.forward * (float)x);
+                    drawingGUI = false;
+                }
+                x = x - 0.1f;
             }
+            x = 10f;
         }
         else if (drawingGUI && a && dash_a)
         {
             Ray leftRay = new Ray(transform.position, Vector3.left);
-            if (!Physics.Raycast(leftRay, 10))
+            while (x > 1 && drawingGUI)
             {
-                transform.Translate(Vector3.left * (float)z);
-                drawingGUI = false;
+                if (!Physics.Raycast(leftRay, x))
+                {
+                    transform.Translate(Vector3.left * (float)x);
+                    drawingGUI = false;
+                }
+                x = x - 0.1f;
             }
+            x = 10f;
+
         }
         else if (drawingGUI && s && dash_s)
         {
             Ray backRay = new Ray(transform.position, Vector3.back);
-            if (!Physics.Raycast(backRay, 10))
+            while (x > 1 && drawingGUI)
             {
-                transform.Translate(Vector3.back * (float)z);
-                drawingGUI = false;
+                if (!Physics.Raycast(backRay, x))
+                {
+                    transform.Translate(Vector3.back * (float)x);
+                    drawingGUI = false;
+                }
+                x = x - 0.1f;
             }
+            x = 10f;
+
         }
         else if (drawingGUI && d && dash_d)
         {
             Ray rightRay = new Ray(transform.position, Vector3.right);
-            if (!Physics.Raycast(rightRay, 10))
+            while (x > 1 && drawingGUI)
             {
-                transform.Translate(Vector3.right * (float)z);
-                drawingGUI = false;
-            }        
+                if (!Physics.Raycast(rightRay, x))
+                {
+                    transform.Translate(Vector3.right * (float)x);
+                    drawingGUI = false;
+                }
+                x = x - 0.1f;
+            }
+            x = 10f;
         }
     }
 
