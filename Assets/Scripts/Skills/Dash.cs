@@ -4,8 +4,9 @@ using System.Threading;
 using UnityEngine;
 using System.Timers;
 using System.Collections;
+using System;
 
-public class Dash : MonoBehaviour {
+public class Dash : Skill {
 
     public float x = 0.1f;
     private float timeStamp = 0f;
@@ -153,6 +154,7 @@ public class Dash : MonoBehaviour {
         }
 
 
+
         void OnGUI()
         {
             if (drawingGUI && w && dash_w)
@@ -217,4 +219,9 @@ public class Dash : MonoBehaviour {
             }
         }
 
+    public override void umiejetnosc()
+    {
+        throw new NotImplementedException();
     }
+
+}
