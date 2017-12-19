@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public GameObject gun;
 
 
+
     public float speed = 0.1f;
 
     // Use this for initialization
@@ -76,7 +77,6 @@ public class Player : MonoBehaviour
                 }
         }
         
-
 
         if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) 
                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))

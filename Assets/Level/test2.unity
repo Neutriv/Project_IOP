@@ -114,6 +114,10 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 =======
 
 >>>>>>> refs/remotes/origin/master
@@ -194,8 +198,12 @@ MonoBehaviour:
   wallDistance: 0
 --- !u!1001 &497225089
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!1001 &139442709
+>>>>>>> refs/remotes/origin/master
+=======
+
 >>>>>>> refs/remotes/origin/master
 =======
 
