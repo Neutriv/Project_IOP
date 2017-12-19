@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int maxHp;
+    public int currentHp;
+    public bool isD;
+    public bool canBeDamaged = true;
     public GameObject gunpoconiewiem;
     public GameObject bullet;
     public GameObject bulletSpawnPoint;
@@ -19,9 +23,11 @@ public class Player : MonoBehaviour
     public GameObject gun;
 
     public float speed = 0.1f;
+
     // Use this for initialization
     void Start()
     {
+        currentHp = maxHp;
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
     }
@@ -70,9 +76,9 @@ public class Player : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
-               || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            animator.SetBool("Run", true);
+        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) 
+               || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            animator.SetBool("Run",true);
 
         else
             animator.SetBool("Run", false);
@@ -82,15 +88,62 @@ public class Player : MonoBehaviour
             Shoot();
         }
 
+        if (isD == true)
+        {
+            if(canBeDamaged == true)
+                StartCoroutine(Wait());
+
+
+        }
+
     }
 
     void FixedUpdate()
     {
         myRig.velocity = moveVelocity;
+       
     }
 
-    void Shoot()
+   void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
+    }
+
+    IEnumerator Wait()
+    {
+        
+        
+        currentHp--;
+        canBeDamaged = false;
+        yield return new WaitForSeconds(0.4f);
+
+        canBeDamaged = true;isD = false;
+        StopAllCoroutines();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("projectile"))
+        {
+            
+            if (isD != true)
+                isD = true;
+        }
+
+        if (other.CompareTag("Rival"))
+        {
+            
+            if (isD != true)
+                isD = true;
+        }
+
+        if (other.CompareTag("Trap"))
+        {
+
+            if (isD != true)
+                isD = true;
+        }
+
+
     }
 }

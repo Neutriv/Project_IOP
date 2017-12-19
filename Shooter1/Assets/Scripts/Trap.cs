@@ -6,9 +6,8 @@ public class Trap : MonoBehaviour {
 
     public Animator anim;
     private int i=0;
-   
     public GameObject player;
-
+    public Player playe;
     public float radius = 5.0F;
     public float power = 10.0F;
 
@@ -31,7 +30,7 @@ public class Trap : MonoBehaviour {
         //Initialising floats
         //m_ForceX = 100;
         //m_ForceY = 100;
-
+        playe = player.GetComponent<Player>();
         //m_ForceXString = "0";
         //m_ForceYString = "0";
 
@@ -71,7 +70,8 @@ public class Trap : MonoBehaviour {
             anim.SetBool("Exp", true);
             anim.SetBool("After", true);
             StartCoroutine(Wait());
-            
+            if(playe.isD != true)
+                playe.isD = true;
         }
 
 
