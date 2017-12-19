@@ -113,6 +113,10 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &65412234 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1655110155396004, guid: b0f68b28b8874814db668b5f2a318507,
@@ -189,8 +193,12 @@ MonoBehaviour:
   z: 10
   wallDistance: 0
 --- !u!1001 &497225089
+<<<<<<< HEAD
 =======
 --- !u!1001 &139442709
+>>>>>>> refs/remotes/origin/master
+=======
+
 >>>>>>> refs/remotes/origin/master
 Prefab:
   m_ObjectHideFlags: 0

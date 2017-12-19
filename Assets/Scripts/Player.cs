@@ -21,12 +21,10 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
-<<<<<<< HEAD
+
 
     public float speed = 0.1f;
-=======
-    
->>>>>>> refs/remotes/origin/master
+
     // Use this for initialization
     void Start()
     {
@@ -79,15 +77,10 @@ public class Player : MonoBehaviour
         }
         
 
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)
-               || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            animator.SetBool("Run", true);
-=======
+
         if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) 
                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             animator.SetBool("Run",true);
->>>>>>> refs/remotes/origin/master
 
         else
             animator.SetBool("Run", false);
