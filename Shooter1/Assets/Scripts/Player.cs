@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public bool canShoot = true;
+
     public int maxHp;
     public int currentHp;
     public bool isD;
@@ -102,10 +104,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (numberOfBullets > 0)
+            if (canShoot == true)
             {
-                numberOfBullets--;
-                bron.shoot();
+                if (numberOfBullets > 0)
+                {
+                    numberOfBullets--;
+                    bron.shoot();
+
+                }
             }
         }
 
