@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,11 +9,7 @@ public class Player : MonoBehaviour
     public int currentHp;
     public bool isD;
     public bool canBeDamaged = true;
-<<<<<<< HEAD
     public GameObject gunpoconiewiem;
-=======
-    public GameObject SpriteRender;
->>>>>>> 7318326ffe92ec5844bdeae116ef3d2aba0752ea
     public GameObject bullet;
     public GameObject bulletSpawnPoint;
     public float waitTime;
@@ -25,78 +22,130 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
-    
+
+    public GameObject nbullet;
+    public GameObject ngun;
+    public weapons bron;
+    public Sprite nsprite;
+
+
+    public int numberOfBullets = 10;
+    public Sprite[] sprites;
+
+
+    public GameObject AmmoTextField;
+    public GameObject HealthUIAmmount;
+
+
+    public float speed = 0.1f;
+
     // Use this for initialization
     void Start()
     {
         currentHp = maxHp;
         myRig = GetComponent<Rigidbody>();
-        animator = SpriteRender.GetComponent<Animator>();
+        animator = gunpoconiewiem.GetComponent<Animator>();
+        bron = new rangedWeapons();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * 0.1f);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * 0.1f);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * 0.1f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * 0.1f);
-        }
-        
+        GameObject Obiekt = GameObject.Find("Player");
+        Dash dash = Obiekt.GetComponent<Dash>();
 
-        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) 
+
+        if (Input.GetKey(KeyCode.W) && dash.allowkey)
+        {
+            Ray forwardRay = new Ray(transform.position, Vector3.forward);
+            if (!Physics.Raycast(forwardRay, 2 * speed))
+            {
+                transform.Translate(Vector3.forward * speed);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.S) && dash.allowkey)
+        {
+            Ray backRay = new Ray(transform.position, Vector3.back);
+            if (!Physics.Raycast(backRay, 6 * speed))
+            {
+                transform.Translate(Vector3.back * speed);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A) && dash.allowkey)
+        {
+            Ray leftRay = new Ray(transform.position, Vector3.left);
+            if (!Physics.Raycast(leftRay, 2 * speed))
+            {
+                transform.Translate(Vector3.left * speed);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.D) && dash.allowkey)
+        {
+            Ray rightRay = new Ray(transform.position, Vector3.right);
+            if (!Physics.Raycast(rightRay, 2 * speed))
+            {
+                transform.Translate(Vector3.right * speed);
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-            animator.SetBool("Run",true);
+            animator.SetBool("Run", true);
 
         else
             animator.SetBool("Run", false);
 
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            if (numberOfBullets > 0)
+            {
+                numberOfBullets--;
+                bron.shoot();
+            }
         }
 
         if (isD == true)
         {
-            if(canBeDamaged == true)
+            if (canBeDamaged == true)
                 StartCoroutine(Wait());
 
 
         }
+        
+        //UI, zmiana tekstów i pasków wszelakich
+
+        Text ammotextfield = AmmoTextField.GetComponent<Text>();
+        ammotextfield.text = "Ammo: " + numberOfBullets;
+        float hp = (float)currentHp/(float)maxHp;
+        HealthUIAmmount.GetComponent<Image>().fillAmount = hp;
 
     }
 
     void FixedUpdate()
     {
         myRig.velocity = moveVelocity;
-       
+
     }
 
-   void Shoot()
+    void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
     }
 
     IEnumerator Wait()
     {
-        
-        
+
+
         currentHp--;
         canBeDamaged = false;
         yield return new WaitForSeconds(0.4f);
 
-        canBeDamaged = true;isD = false;
+        canBeDamaged = true; isD = false;
         StopAllCoroutines();
     }
 
@@ -104,14 +153,14 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("projectile"))
         {
-            
+
             if (isD != true)
                 isD = true;
         }
 
         if (other.CompareTag("Rival"))
         {
-            
+
             if (isD != true)
                 isD = true;
         }
