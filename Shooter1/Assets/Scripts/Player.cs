@@ -8,7 +8,11 @@ public class Player : MonoBehaviour
     public int currentHp;
     public bool isD;
     public bool canBeDamaged = true;
+<<<<<<< HEAD
     public GameObject gunpoconiewiem;
+=======
+    public GameObject SpriteRender;
+>>>>>>> 7318326ffe92ec5844bdeae116ef3d2aba0752ea
     public GameObject bullet;
     public GameObject bulletSpawnPoint;
     public float waitTime;
@@ -27,7 +31,7 @@ public class Player : MonoBehaviour
     {
         currentHp = maxHp;
         myRig = GetComponent<Rigidbody>();
-        animator = gunpoconiewiem.GetComponent<Animator>();
+        animator = SpriteRender.GetComponent<Animator>();
     }
 
     // Update is called once per frame
