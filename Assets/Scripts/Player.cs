@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
     private Vector3 moveVelocity;
 
     public GameObject gun;
-    
+
+
     // Use this for initialization
     void Start()
     {
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
        
     }
 
-   void Shoot()
+   public void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
     }
