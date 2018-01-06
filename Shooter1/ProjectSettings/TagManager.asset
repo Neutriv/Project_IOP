@@ -12,6 +12,9 @@ TagManager:
   - playerProjectile
   - AI
   - Trap
+  - UI
+  - HealthBarAmmount
+  - NPC
   layers:
   - Default
   - TransparentFX

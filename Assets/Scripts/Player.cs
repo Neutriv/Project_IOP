@@ -22,7 +22,10 @@ public class Player : MonoBehaviour
 
     public GameObject gun;
 
-    public float speed = 0.1f;
+
+
+   public float speed = 0.1f;
+
 
     // Use this for initialization
     void Start()
@@ -104,7 +107,7 @@ public class Player : MonoBehaviour
        
     }
 
-   void Shoot()
+   public void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
     }
