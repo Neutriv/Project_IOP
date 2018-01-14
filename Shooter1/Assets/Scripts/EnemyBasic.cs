@@ -8,10 +8,10 @@ public class EnemyBasic : MonoBehaviour
 	public bool canShoot = true;
 
 
-	public int maxHp;
-	public int currentHp;
-	public bool isD;
-	public bool canBeDamaged = true;
+	//public int maxHp;
+	//public int currentHp;
+	//public bool isD;
+	//public bool canBeDamaged = true;
 	//public GameObject gunpoconiewiem;
 	public GameObject bullet;
 	public GameObject bulletSpawnPoint;
@@ -32,7 +32,7 @@ public class EnemyBasic : MonoBehaviour
 	//public Sprite nsprite;
 
 
-	public int numberOfBullets = 10;
+	//public int numberOfBullets = 10;
 	public Sprite[] sprites;
 
 
@@ -95,11 +95,12 @@ public class EnemyBasic : MonoBehaviour
 
 	public void Shoot()
 	{
+
 		Instantiate(
 			bullet.transform, 
 			bulletSpawnPoint.transform.position,
-			gun.transform.rotation
-		);
+			gun.transform.rotation);
+
 	}
 
 	/*IEnumerator Wait()
