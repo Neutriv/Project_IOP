@@ -1617,6 +1617,22 @@ GameObject:
   m_PrefabParentObject: {fileID: 1544472031053996, guid: a1030a2ef458b8c40bbd765910167074,
     type: 2}
   m_PrefabInternal: {fileID: 1112012180}
+--- !u!114 &80748736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80748728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745bb847d877d4c4b9f846d0cee42ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  enemy: {fileID: 80748728}
+  ThisObject: {fileID: 1201191001}
+  HP: 0
+  anim: {fileID: 0}
 --- !u!1001 &85745655
 Prefab:
   m_ObjectHideFlags: 0
@@ -3999,22 +4015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 1
-  maxHp: 3
-  currentHp: 3
-  isD: 0
-  canBeDamaged: 1
-  gunpoconiewiem: {fileID: 0}
   bullet: {fileID: 1016841265753424, guid: 3a250fe55f2b40943a027b9227f955a6, type: 2}
   bulletSpawnPoint: {fileID: 236646881}
   waitTime: 0
   gun: {fileID: 1090463800}
-  nbullet: {fileID: 0}
-  ngun: {fileID: 0}
-  nsprite: {fileID: 0}
-  numberOfBullets: 10
   sprites: []
-  AmmoTextField: {fileID: 0}
-  HealthUIAmmount: {fileID: 0}
   speed: 0.1
 --- !u!65 &193195607
 BoxCollider:
@@ -16879,6 +16884,20 @@ Prefab:
       propertyPath: _serializer._serializedCustomData.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114774910996988330, guid: a1030a2ef458b8c40bbd765910167074,
+        type: 2}
+      propertyPath: currentHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418644832394012, guid: a1030a2ef458b8c40bbd765910167074, type: 2}
+      propertyPath: m_TagString
+      value: Rival
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774910996988330, guid: a1030a2ef458b8c40bbd765910167074,
+        type: 2}
+      propertyPath: maxHp
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1030a2ef458b8c40bbd765910167074, type: 2}
   m_IsPrefabParent: 0
@@ -18771,6 +18790,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1201191001 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1418644832394012, guid: a1030a2ef458b8c40bbd765910167074,
+    type: 2}
+  m_PrefabInternal: {fileID: 1112012180}
 --- !u!1 &1203829610
 GameObject:
   m_ObjectHideFlags: 0
@@ -19537,22 +19561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 1
-  maxHp: 3
-  currentHp: 3
-  isD: 0
-  canBeDamaged: 1
-  gunpoconiewiem: {fileID: 0}
   bullet: {fileID: 1016841265753424, guid: 3a250fe55f2b40943a027b9227f955a6, type: 2}
   bulletSpawnPoint: {fileID: 1759216553}
   waitTime: 0
   gun: {fileID: 322513256}
-  nbullet: {fileID: 0}
-  ngun: {fileID: 0}
-  nsprite: {fileID: 0}
-  numberOfBullets: 10
   sprites: []
-  AmmoTextField: {fileID: 0}
-  HealthUIAmmount: {fileID: 0}
   speed: 0.1
 --- !u!65 &1255355907
 BoxCollider:
@@ -32720,6 +32733,16 @@ Prefab:
         type: 2}
       propertyPath: _serializer._serializedCustomData.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114221686541337256, guid: b25a23aa73ab6f9479ba85d42b4e726b,
+        type: 2}
+      propertyPath: maxHp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904763262315424, guid: b25a23aa73ab6f9479ba85d42b4e726b,
+        type: 2}
+      propertyPath: waitTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b25a23aa73ab6f9479ba85d42b4e726b, type: 2}
