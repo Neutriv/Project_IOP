@@ -6903,10 +6903,6 @@ MonoBehaviour:
   a: 0
   s: 0
   d: 0
-  dash_w: 0
-  dash_a: 0
-  dash_s: 0
-  dash_d: 0
   allowkey: 1
   z: 10
 --- !u!114 &404820124
@@ -6920,17 +6916,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aa1c2ac2738bd4cb89ffb99702248c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0.1
   drawingGUI: 0
   w: 0
   a: 0
   s: 0
   d: 0
-  dash_w: 0
-  dash_a: 0
-  dash_s: 0
-  dash_d: 0
   allowkey: 1
+--- !u!114 &404820125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172a6ae3f90448a4f9e76f7b5f3cdc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404820119}
+  timeStamp: 0
+  timeStamp2: 0
+  coolDown: 2
+  used: 0
+--- !u!114 &404820126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5232125828ce9842a839b6513915a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404820119}
+  timeStamp: 0
+  timeStamp2: 0
+  coolDown: 2
+  used: 0
+--- !u!114 &404820127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a6dc892fb39cc41b56123646ad2439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404820119}
+  timeStamp: 0
+  timeStamp2: 0
+  coolDown: 20
+--- !u!114 &404820128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404820117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185ec6a226016f9428e3052886d0d35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404820119}
+  timeStamp: 0
+  timeStamp2: 0
+  coolDown: 30
 --- !u!1 &414065241
 GameObject:
   m_ObjectHideFlags: 0
