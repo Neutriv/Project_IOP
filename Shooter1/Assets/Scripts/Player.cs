@@ -6,6 +6,15 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public bool canShoot = true;
+    public bool shooting_off = false;
+
+    public int skill_point = 0;
+    public bool dash_lvl1 = false;
+    public bool dash_lvl2 = false;
+    public bool Immaterial_lvl1 = false;
+    public bool Immaterial_lvl2 = false;
+    public bool Heal_lvl1 = false;
+    public bool Heal_lvl2 = false;
 
     public int maxHp;
     public int currentHp;
@@ -54,20 +63,126 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (skill_point > 0)
+        {
+            if (Input.GetKeyUp(KeyCode.Alpha1) && !dash_lvl1)
+            {
+                dash_lvl1 = true;
+                skill_point = skill_point - 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha1) && !dash_lvl1)
+            {
+                dash_lvl1 = false;
+                dash_lvl2 = true;
+                skill_point = skill_point - 1;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha1) && !Immaterial_lvl1)
+            {
+                Immaterial_lvl1 = true;
+                skill_point = skill_point - 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha1) && !Immaterial_lvl2)
+            {
+                Immaterial_lvl1 = false;
+                Immaterial_lvl2 = true;
+                skill_point = skill_point - 1;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha1) && !Heal_lvl1)
+            {
+                Heal_lvl1 = true;
+                skill_point = skill_point - 1;
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha1) && !Heal_lvl2)
+            {
+                Heal_lvl1 = false;
+                Heal_lvl2 = true;
+                skill_point = skill_point - 1;
+            }
+
+        }
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+
         GameObject Obiekt = GameObject.Find("Player");
         Dash dash = Obiekt.GetComponent<Dash>();
+        /*
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * (speed / 2));
 
+        }
+        
+        */
 
-        if (Input.GetKey(KeyCode.W) && dash.allowkey)
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && dash.allowkey)
         {
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
-            if (!Physics.Raycast(forwardRay, 2 * speed))
+            Ray leftRay = new Ray(transform.position, Vector3.left);
+            if (!Physics.Raycast(forwardRay, 4 * speed))
+            {
+                transform.Translate(Vector3.forward * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+            if (!Physics.Raycast(leftRay, 4 * speed))
+            {
+                transform.Translate(Vector3.left * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+        }
+
+
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) && dash.allowkey)
+        {
+            Ray forwardRay = new Ray(transform.position, Vector3.forward);
+            Ray rightRay = new Ray(transform.position, Vector3.right);
+            if (!Physics.Raycast(forwardRay, 4 * speed))
+            {
+                transform.Translate(Vector3.forward * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+            if (!Physics.Raycast(rightRay, 4 * speed))
+            {
+                transform.Translate(Vector3.right * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && dash.allowkey)
+        {
+            Ray backRay = new Ray(transform.position, Vector3.back);
+            Ray leftRay = new Ray(transform.position, Vector3.left);
+            if (!Physics.Raycast(backRay, 6 * speed))
+            {
+                transform.Translate(Vector3.back * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+            if (!Physics.Raycast(leftRay, 4 * speed))
+            {
+                transform.Translate(Vector3.left * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && dash.allowkey)
+        {
+            Ray backRay = new Ray(transform.position, Vector3.back);
+            Ray rightRay = new Ray(transform.position, Vector3.right);
+            if (!Physics.Raycast(backRay, 6 * speed))
+            {
+                transform.Translate(Vector3.back * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+            if (!Physics.Raycast(rightRay, 4 * speed))
+            {
+                transform.Translate(Vector3.right * ((speed * Mathf.Sqrt(2))) / 2);
+            }
+        }
+
+        else if (Input.GetKey(KeyCode.W) && dash.allowkey)
+        {
+            Ray forwardRay = new Ray(transform.position, Vector3.forward);
+            if (!Physics.Raycast(forwardRay, 4 * speed))
             {
                 transform.Translate(Vector3.forward * speed);
             }
         }
 
-        if (Input.GetKey(KeyCode.S) && dash.allowkey)
+        else if (Input.GetKey(KeyCode.S) && dash.allowkey)
         {
             Ray backRay = new Ray(transform.position, Vector3.back);
             if (!Physics.Raycast(backRay, 6 * speed))
@@ -76,24 +191,25 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.A) && dash.allowkey)
+        else if (Input.GetKey(KeyCode.A) && dash.allowkey)
         {
             Ray leftRay = new Ray(transform.position, Vector3.left);
-            if (!Physics.Raycast(leftRay, 2 * speed))
+            if (!Physics.Raycast(leftRay, 4 * speed))
             {
                 transform.Translate(Vector3.left * speed);
             }
         }
 
-        if (Input.GetKey(KeyCode.D) && dash.allowkey)
+        else if (Input.GetKey(KeyCode.D) && dash.allowkey)
         {
             Ray rightRay = new Ray(transform.position, Vector3.right);
-            if (!Physics.Raycast(rightRay, 2 * speed))
+            if (!Physics.Raycast(rightRay, 4 * speed))
             {
                 transform.Translate(Vector3.right * speed);
             }
         }
 
+     
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
                || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
@@ -104,7 +220,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (canShoot == true)
+            if (canShoot == true && !shooting_off)
             {
                 if (numberOfBullets > 0)
                 {
