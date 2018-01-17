@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
        
     }
 
-   void Shoot()
+   public void Shoot()
     {
         Instantiate(bullet.transform, bulletSpawnPoint.transform.position, gun.transform.rotation);
     }
