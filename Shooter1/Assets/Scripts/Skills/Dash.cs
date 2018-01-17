@@ -8,43 +8,28 @@ using System;
 
 public class Dash : Skill {
 
-    public float x = 0.1f;
+    private float x = 0.1f;
     private float timeStamp = 0f;
     private float coolDown = 2f;
     private float smooth = 1f;
+
 
     public bool drawingGUI = false;
     public bool w = false;
     public bool a = false;
     public bool s = false;
     public bool d = false;
-    public bool dash_w = false;
-    public bool dash_a = false;
-    public bool dash_s = false;
-    public bool dash_d = false;
 
     public bool allowkey = true;
 
 
     // Use this for initialization
     void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-
-        /*
-            if (Input.GetKey(KeyCode.X))
-            {
-                if (timeStamp + coolDown <= Time.time)
-                {
-                    timeStamp = Time.time;
-                    transform.Translate(Vector3.up * (float)x);
-                }
-
-            }
-            */
 
         if (allowkey)
         {
@@ -54,10 +39,6 @@ public class Dash : Skill {
                 s = false;
                 w = false;
                 d = false;
-                dash_a = true;
-                dash_d = false;
-                dash_s = false;
-                dash_w = false;
             }
         }
 
@@ -69,10 +50,6 @@ public class Dash : Skill {
                 a = false;
                 w = false;
                 d = false;
-                dash_s = true;
-                dash_a = false;
-                dash_d = false;
-                dash_w = false;
             }
         }
 
@@ -84,10 +61,6 @@ public class Dash : Skill {
                 w = false;
                 a = false;
                 s = false;
-                dash_d = true;
-                dash_a = false;
-                dash_s = false;
-                dash_w = false;
             }
         }
 
@@ -99,65 +72,136 @@ public class Dash : Skill {
                 a = false;
                 s = false;
                 d = false;
-                dash_w = true;
-                dash_a = false;
-                dash_d = false;
-                dash_s = false;
             }
         }
 
-            if (Input.GetKeyUp(KeyCode.A))
-            {
-                //  a = false;
-            }
-
-            if (Input.GetKeyUp(KeyCode.S))
-            {
-                // s = false;
-            }
-
-            if (Input.GetKeyUp(KeyCode.D))
-            {
-                // d = false;
-            }
-
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                // w = false;
-            }
-
-            if (Input.GetKeyUp(KeyCode.X))
-            {
-
-            if (timeStamp + coolDown <= Time.time)
-            {
-                drawingGUI = true;
-                timeStamp = Time.time;
-            }
-            }
-
-
-        }
-
-
-
-        public void Ruch()
+        if (allowkey)
         {
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
+            {
+                a = true;
+                w = true;
+                s = false;
+                d = false;
+            }
+        }
+        if (allowkey)
+        {
+            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
+            {
+                d = true;
+                w = true;
+                s = false;
+                a = false;
+            }
+        }
+        if (allowkey)
+        {
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+            {
+                a = true;
+                s = true;
+                w = false;
+                d = false;
+            }
+        }
+        if (allowkey)
+        {
+            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S))
+            {
+                d = true;
+                s = true;
+                w = false;
+                a = false;
+            }
+        }
 
-            if (x > 0)
+        GameObject Obiekt = GameObject.Find("Player");
+        Player player = Obiekt.GetComponent<Player>();
+        if (player.dash_lvl1)
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
             {
 
-                transform.Translate(Vector3.up * (float)x);
-                x = x - 0.001f;
+                if (timeStamp + coolDown <= Time.time)
+                {
+                    drawingGUI = true;
+                    timeStamp = Time.time;
+                }
             }
-
         }
 
 
+        }
 
         void OnGUI()
         {
-            if (drawingGUI && w && dash_w)
+
+        if (drawingGUI && w && a)
+        {
+            allowkey = false;
+            if (x >= 0)
+            {
+                transform.Translate(Vector3.forward * ((float)x*Mathf.Sqrt(2)/2));
+                transform.Translate(Vector3.left * ((float)x*Mathf.Sqrt(2)/2));
+                x = x - 0.001f;
+                if (x < 0.02f)
+                {
+                    drawingGUI = false;
+                    x = 0.1f;
+                    allowkey = true;
+                }
+            }
+        }
+        else if (drawingGUI && w && d)
+        {
+            allowkey = false;
+            if (x >= 0)
+            {
+                transform.Translate(Vector3.forward * ((float)x * Mathf.Sqrt(2) / 2));
+                transform.Translate(Vector3.right * ((float)x * Mathf.Sqrt(2) / 2));
+                x = x - 0.001f;
+                if (x < 0.02f)
+                {
+                    drawingGUI = false;
+                    x = 0.1f;
+                    allowkey = true;
+                }
+            }
+        }
+        else if (drawingGUI && s && a)
+        {
+            allowkey = false;
+            if (x >= 0)
+            {
+                transform.Translate(Vector3.back * ((float)x * Mathf.Sqrt(2) / 2));
+                transform.Translate(Vector3.left * ((float)x * Mathf.Sqrt(2) / 2));
+                x = x - 0.001f;
+                if (x < 0.02f)
+                {
+                    drawingGUI = false;
+                    x = 0.1f;
+                    allowkey = true;
+                }
+            }
+        }
+        else if (drawingGUI && s && d)
+        {
+            allowkey = false;
+            if (x >= 0)
+            {
+                transform.Translate(Vector3.back * ((float)x * Mathf.Sqrt(2) / 2));
+                transform.Translate(Vector3.right * ((float)x * Mathf.Sqrt(2) / 2));
+                x = x - 0.001f;
+                if (x < 0.02f)
+                {
+                    drawingGUI = false;
+                    x = 0.1f;
+                    allowkey = true;
+                }
+            }
+        }
+        else if (drawingGUI && w)
             {
                 allowkey = false;
                 if (x >= 0)
@@ -172,7 +216,7 @@ public class Dash : Skill {
                     }
                 }
             }
-            else if (drawingGUI && a && dash_a)
+            else if (drawingGUI && a)
             {
                 allowkey = false;
                 if (x >= 0)
@@ -187,7 +231,7 @@ public class Dash : Skill {
                     }
                 }
             }
-            else if (drawingGUI && s && dash_s)
+            else if (drawingGUI && s)
             {
                 allowkey = false;
                 if (x >= 0)
@@ -202,7 +246,7 @@ public class Dash : Skill {
                     }
                 }
             }
-            else if (drawingGUI && d && dash_d)
+            else if (drawingGUI && d)
             {
                 allowkey = false;
                 if (x >= 0)
