@@ -57,7 +57,7 @@ public class addTp : MonoBehaviour {
                         sw.Write(x.ToString());
                         sw.Close();
                         content = string.Empty;
-                        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "unspentpoints.txt"))
+                        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "spentpoints.txt"))
                         {
                             content = reader.ReadToEnd();
                         }

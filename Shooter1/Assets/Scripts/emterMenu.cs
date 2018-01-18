@@ -34,16 +34,7 @@ public class emterMenu : MonoBehaviour {
             sw.Write("6");
 
         sw.Close();
-
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "spentpoints.txt"))
-        {
-            content = reader.ReadToEnd();
-        }
-        int y = System.Convert.ToInt32(content);
-        sw = new StreamWriter(Application.dataPath + "/data/" + "unspentpoints.txt");
-        sw.Write((x - y).ToString());
-        sw.Close();
+        
 
     }
 

@@ -23,15 +23,7 @@ public class Death : MonoBehaviour {
         HP = enemy.GetComponent<enemy>().currentHp;
         if (HP <= 0)
         {
-           
-           StartCoroutine(Wait());
-            
-        }
-	}
-    
-    IEnumerator Wait()
-    {   anim.SetBool("Death", true);
-        yield return new WaitForSeconds(2f);
+         anim.SetBool("Death", true);
         //jeszcze dodać w playerze ile punktów dostał w tym przejściu.
         string content = string.Empty;
         using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "exp.txt"))
@@ -42,8 +34,11 @@ public class Death : MonoBehaviour {
         sw = new StreamWriter(Application.dataPath + "/data/" + "exp.txt");
         sw.Write((x+xp).ToString());
         sw.Close();
-
+            
+        Destroy(sprite);
         Destroy(ThisObject);
-        StopAllCoroutines();
-    }
+            
+        }
+	}
+  
 }

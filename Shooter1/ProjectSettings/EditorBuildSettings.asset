@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/poziom1.unity
     guid: 7632a41fa05f961468c831343a77e91b
+  - enabled: 1
+    path: Assets/Level/poziom2.unity
+    guid: 3e0ef0ec42a3d83429638ab53afe63a1
