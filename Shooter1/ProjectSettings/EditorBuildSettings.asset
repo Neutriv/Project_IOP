@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Level/menu.unity
+    guid: 003b17471a044db46bb416dcebb22a1e
+  - enabled: 1
+    path: Assets/Level/poziom1.unity
+    guid: 7632a41fa05f961468c831343a77e91b
