@@ -13,4 +13,7 @@ abstract public class Skill : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public abstract void umiejetnosc();
+
 }
