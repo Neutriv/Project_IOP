@@ -20,6 +20,7 @@ public class lowres : MonoBehaviour
             {
                 //rozdzielczość
                 Screen.SetResolution(1440, 900, true);
+                PlayerPrefs.SetInt("resolution", 0);
             }
         }
     }

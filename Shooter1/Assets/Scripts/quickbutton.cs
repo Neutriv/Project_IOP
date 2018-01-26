@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+//using System.IO;
 
 public class quickbutton : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class quickbutton : MonoBehaviour
     bool over;
     public Sprite locked,lit,unlit;
     public bool quickPlayLocked = true;
-    StreamWriter sw;
+    //StreamWriter sw;
     // Use this for initialization
     void Start()
     {
@@ -32,6 +32,7 @@ public class quickbutton : MonoBehaviour
 
             gameObject.GetComponent<Collider>().enabled = true;
         }
+        /*
         string content = string.Empty;
         using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "quickplayenabled.txt"))
         {
@@ -52,6 +53,18 @@ public class quickbutton : MonoBehaviour
                     sw.Write("2");
                     sw.Close();
                 }
+            }
+        }*/
+        if (PlayerPrefs.GetInt("quickplayenabled") == 0)
+            quickPlayLocked = true;
+        else
+            quickPlayLocked = false;
+
+        if (over)
+        {
+            if (!quickPlayLocked)
+            {
+                PlayerPrefs.SetInt("gamemode", 2);
             }
         }
     }

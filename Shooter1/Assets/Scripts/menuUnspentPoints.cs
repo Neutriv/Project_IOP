@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+//using System.IO;
 
 public class menuUnspentPoints : MonoBehaviour
 {
 
-    StreamWriter sw;
+    //StreamWriter sw;
     public Sprite zero, jeden, dwa, trzy, cztery, piec, szesc;
     // Use this for initialization
     void Start()
@@ -17,11 +17,7 @@ public class menuUnspentPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "unspentpoints.txt"))
-        {
-            content = reader.ReadToEnd();
-        }
+        string content = PlayerPrefs.GetInt("unspentpoints",0).ToString();
         if (content == "0")
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = zero;

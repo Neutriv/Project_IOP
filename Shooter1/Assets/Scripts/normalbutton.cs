@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+//using System.IO;
 
 public class normalbutton : MonoBehaviour {
-    StreamWriter sw;
+    //StreamWriter sw;
     bool over;
     // Use this for initialization
     void Start()
@@ -20,9 +20,10 @@ public class normalbutton : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 //odpal normal
-                sw = new StreamWriter(Application.dataPath + "/data/" + "gamemode.txt");
-                sw.Write("1");
-                sw.Close();
+                //sw = new StreamWriter(Application.dataPath + "/data/" + "gamemode.txt");
+                //sw.Write("1");
+                //sw.Close();
+                PlayerPrefs.SetInt("gamemode", 1);
             }
         }
     }

@@ -21,6 +21,8 @@ public class midres : MonoBehaviour
             {
                 //rozdzielczość
                 Screen.SetResolution(1680, 1050, true);
+
+                PlayerPrefs.SetInt("resolution", 1);
             }
         }
     }

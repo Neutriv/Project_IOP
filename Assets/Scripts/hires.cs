@@ -21,6 +21,8 @@ public class hires : MonoBehaviour
             {
                 //rozdzielczość
                 Screen.SetResolution(1920, 1080, true);
+
+                PlayerPrefs.SetInt("resolution", 2);
             }
         }
     }

@@ -10,8 +10,15 @@ public class fullscreen : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        if (PlayerPrefs.GetInt("fullscreen", 0) == 1)
+            Screen.fullScreen = true;
+        else
+            Screen.fullScreen = false;
+
         if (Screen.fullScreen == true)
+        {
             gameObject.GetComponent<SpriteRenderer>().sprite = fullScr;
+        }
         if (Screen.fullScreen == false)
             gameObject.GetComponent<SpriteRenderer>().sprite = fullScrOff;
 
@@ -26,8 +33,14 @@ public class fullscreen : MonoBehaviour {
             {
                 //rozdzielczość
                 Screen.fullScreen = !Screen.fullScreen;
+
             }
+
         }
+        if (Screen.fullScreen == true)
+            PlayerPrefs.SetInt("fullscreen", 1);
+        else
+            PlayerPrefs.SetInt("fullscreen", 0);
     }
     void OnMouseOver()
     {

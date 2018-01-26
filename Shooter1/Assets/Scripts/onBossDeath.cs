@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class onBossDeath : MonoBehaviour {
-
+    public Player player;
+    public int i;
     public GameObject win;
+    public enemy en;
 	// Use this for initialization
 	void Start () {
+       i = 0;
         
 	}
 	
@@ -15,9 +17,19 @@ public class onBossDeath : MonoBehaviour {
 	void Update () {
         if (gameObject.GetComponent<enemy>().currentHp == 0)
         {
+            if (i == 0) {
+                    Debug.Log("dieeeeeee boss");
             win.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Return))
-                SceneManager.LoadScene("menu", LoadSceneMode.Single);
+                    player.currentHp = 1000;
+                    i++;
+                }
         }
-	}
+        
+    }
+
+    public IEnumerator Pause()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        
+    }
 }

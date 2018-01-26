@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.IO;
+//using System.IO;
 
 public class Player : MonoBehaviour
 {
 
-
+    public bool isAmmo = false;
     public GameObject lose;
     public RuntimeAnimatorController silver, red, gold;
     public bool canShoot = true;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public bool Heal_lvl2;
     public bool dmg;
 
-    StreamWriter sw;
+   // StreamWriter sw;
     public int maxHp;
     public int currentHp;
     public bool isD;
@@ -78,19 +78,11 @@ public class Player : MonoBehaviour
 
         //zczytuje wartość dla dash i tp
 
-        string content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "dash.txt"))
+        if (PlayerPrefs.GetInt("dash") == 1)
         {
-            content = reader.ReadToEnd();
-        }
-        if (content == "1")
             dash_lvl1 = true;
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "teleport.txt"))
-        {
-            content = reader.ReadToEnd();
         }
-        if (content == "1")
+        if (PlayerPrefs.GetInt("teleport") == 1)
         {
             dash_lvl1 = false;
             dash_lvl2 = true;
@@ -98,59 +90,38 @@ public class Player : MonoBehaviour
 
         //zczytuje wartość dla heal 1 i 2
 
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "heal1.txt"))
+        if (PlayerPrefs.GetInt("heal1") == 1)
         {
-            content = reader.ReadToEnd();
-        }
-        if (content == "1")
             Heal_lvl1 = true;
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "heal2.txt"))
-        {
-            content = reader.ReadToEnd();
         }
-        if (content == "1")
+        if (PlayerPrefs.GetInt("heal2") == 1)
         {
             Heal_lvl1 = false;
             Heal_lvl2 = true;
         }
 
         //zczytuje wartość dla immaterial 1 i 2
-
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "immaterial1.txt"))
+        if (PlayerPrefs.GetInt("immaterial1") == 1)
         {
-            content = reader.ReadToEnd();
-        }
-        if (content == "1")
             Immaterial_lvl1 = true;
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "immaterial2.txt"))
-        {
-            content = reader.ReadToEnd();
         }
-        if (content == "1")
+        if (PlayerPrefs.GetInt("immaterial2") == 1)
         {
             Immaterial_lvl1 = false;
             Immaterial_lvl2 = true;
         }
 
         //zczytuje wartość currentSkin aby ustawić animatora
-        content = string.Empty;
-        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "currentSkin.txt"))
+        if (PlayerPrefs.GetInt("currentskin") == 0)
         {
-            content = reader.ReadToEnd();
-        }
-        if(content == "0")
-        {
+
             animator.runtimeAnimatorController = silver as RuntimeAnimatorController;
         }
-        else if (content == "1")
+        else if (PlayerPrefs.GetInt("currentskin") == 1)
         {
             animator.runtimeAnimatorController = red as RuntimeAnimatorController;
         }
-        else if (content == "2")
+        else if (PlayerPrefs.GetInt("currentskin") == 2)
         {
             animator.runtimeAnimatorController = gold as RuntimeAnimatorController;
         }
@@ -396,6 +367,12 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("ammo"))
+        {
+            isAmmo = true;
+        }
+        else
+            isAmmo = false;
         if (dmg)
         {
             if (other.CompareTag("projectile"))

@@ -28,9 +28,8 @@ public class characterSelection : MonoBehaviour {
                 //zmiana wartości pliku currentskin
                 if (namee == "0")
                 {
-                    sw = new StreamWriter(Application.dataPath + "/data/" + "currentskin.txt");
-                    sw.Write("0");
-                    sw.Close();
+                    
+                    PlayerPrefs.SetInt("currentskin", 0);
 
                     select = true;
                     char2.select = false;
@@ -40,16 +39,10 @@ public class characterSelection : MonoBehaviour {
                 {
                     //tutaj sprawdzić czy można wybrać jeśli tak to dalej
                     //currentChar.text = "1";
-                    string content = string.Empty;
-                    using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "redenabled.txt"))
-                    {
-                        content = reader.ReadToEnd();
-                    }
+                    string content = PlayerPrefs.GetInt("redenabled", 0).ToString();
                     if (content == "1")
                     {
-                        sw = new StreamWriter(Application.dataPath + "/data/" + "currentskin.txt");
-                        sw.Write("1");
-                        sw.Close();
+                        PlayerPrefs.SetInt("currentskin", 1);
                         select = true;
                         char2.select = false;
                         char3.select = false;
@@ -60,16 +53,10 @@ public class characterSelection : MonoBehaviour {
                 if (namee == "2")
                 {//titaj sprawdzić czy można wybrać
                     //currentChar.text = "2";
-                    string content = string.Empty;
-                    using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "goldenabled.txt"))
-                    {
-                        content = reader.ReadToEnd();
-                    }
+                    string content = PlayerPrefs.GetInt("goldenabled",0).ToString();
                     if (content == "1")
                     {
-                        sw = new StreamWriter(Application.dataPath + "/data/" + "currentskin.txt");
-                        sw.Write("2");
-                        sw.Close();
+                        PlayerPrefs.SetInt("currentskin", 2);
 
                         select = true;
                         char2.select = false;
