@@ -13,6 +13,7 @@ public class Dash : Skill {
     private float coolDown = 2f;
     private float smooth = 1f;
 
+    public bool dashing;
 
     public bool drawingGUI = false;
     public bool w = false;
@@ -139,6 +140,7 @@ public class Dash : Skill {
 
         if (drawingGUI && w && a)
         {
+            dashing = true;
             allowkey = false;
             if (x >= 0)
             {
@@ -147,6 +149,7 @@ public class Dash : Skill {
                 x = x - 0.001f;
                 if (x < 0.02f)
                 {
+                    dashing = false;
                     drawingGUI = false;
                     x = 0.1f;
                     allowkey = true;
@@ -155,6 +158,7 @@ public class Dash : Skill {
         }
         else if (drawingGUI && w && d)
         {
+            dashing = true;
             allowkey = false;
             if (x >= 0)
             {
@@ -163,6 +167,7 @@ public class Dash : Skill {
                 x = x - 0.001f;
                 if (x < 0.02f)
                 {
+                    dashing = false;
                     drawingGUI = false;
                     x = 0.1f;
                     allowkey = true;
@@ -171,6 +176,7 @@ public class Dash : Skill {
         }
         else if (drawingGUI && s && a)
         {
+            dashing = true;
             allowkey = false;
             if (x >= 0)
             {
@@ -179,6 +185,7 @@ public class Dash : Skill {
                 x = x - 0.001f;
                 if (x < 0.02f)
                 {
+                    dashing = false;
                     drawingGUI = false;
                     x = 0.1f;
                     allowkey = true;
@@ -187,6 +194,7 @@ public class Dash : Skill {
         }
         else if (drawingGUI && s && d)
         {
+            dashing = true;
             allowkey = false;
             if (x >= 0)
             {
@@ -195,6 +203,7 @@ public class Dash : Skill {
                 x = x - 0.001f;
                 if (x < 0.02f)
                 {
+                    dashing = false;
                     drawingGUI = false;
                     x = 0.1f;
                     allowkey = true;
@@ -203,14 +212,16 @@ public class Dash : Skill {
         }
         else if (drawingGUI && w)
             {
-                allowkey = false;
+            dashing = true;
+            allowkey = false;
                 if (x >= 0)
                 {
                     transform.Translate(Vector3.forward * (float)x);
                     x = x - 0.001f;
                     if (x < 0.02f)
                     {
-                        drawingGUI = false;
+                    dashing = false;
+                    drawingGUI = false;
                         x = 0.1f;
                         allowkey = true;
                     }
@@ -218,14 +229,16 @@ public class Dash : Skill {
             }
             else if (drawingGUI && a)
             {
-                allowkey = false;
+            dashing = true;
+            allowkey = false;
                 if (x >= 0)
                 {
                     transform.Translate(Vector3.left * (float)x);
                     x = x - 0.001f;
                     if (x < 0.02f)
                     {
-                        drawingGUI = false;
+                    dashing = false;
+                    drawingGUI = false;
                         x = 0.1f;
                         allowkey = true;
                     }
@@ -233,14 +246,16 @@ public class Dash : Skill {
             }
             else if (drawingGUI && s)
             {
-                allowkey = false;
+            dashing = true;
+            allowkey = false;
                 if (x >= 0)
                 {
                     transform.Translate(Vector3.back * (float)x);
                     x = x - 0.001f;
                     if (x < 0.02f)
                     {
-                        drawingGUI = false;
+                    dashing = false;
+                    drawingGUI = false;
                         x = 0.1f;
                         allowkey = true;
                     }
@@ -248,14 +263,16 @@ public class Dash : Skill {
             }
             else if (drawingGUI && d)
             {
-                allowkey = false;
+            dashing = true;
+            allowkey = false;
                 if (x >= 0)
                 {
                     transform.Translate(Vector3.right * (float)x);
                     x = x - 0.001f;
                     if (x < 0.02f)
                     {
-                        drawingGUI = false;
+                    dashing = false;
+                    drawingGUI = false;
                         x = 0.1f;
                         allowkey = true;
                     }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Level/test21.unity
+- path: Assets/Level/poziom2.unity
   isLoaded: 1
   isActive: 1

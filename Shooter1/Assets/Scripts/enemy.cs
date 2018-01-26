@@ -26,7 +26,7 @@ public class enemy : MonoBehaviour {
         if (currentHp <= 0)
         {
 
-            Destroy(GameObject.FindWithTag("AI"));
+            //Destroy(GameObject.FindWithTag("AI"));
 
         }
     }

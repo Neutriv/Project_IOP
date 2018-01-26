@@ -11,6 +11,7 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
     public bool d = false;
     public bool allowkey = true;
 
+    public bool teleporting;
     private float x = 10f;
 
     public float z = 10f;
@@ -114,23 +115,22 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (timeStamp + coolDown <= Time.time)
-            {
-                drawingGUI = true;
-                timeStamp = Time.time;
-            }
-        }
-
         GameObject Obiekt = GameObject.Find("Player");
         Player player = Obiekt.GetComponent<Player>();
         if (player.dash_lvl2)
         {
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                drawingGUI = false;
+                if ((timeStamp + coolDown) <= Time.time)
+                    {
+                    drawingGUI = true;
+                    timeStamp = Time.time;
+                }
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            drawingGUI = false;
         }
             /*
             RaycastHit hit;
@@ -149,12 +149,14 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
     {
         if (drawingGUI && w && a)
         {
+            teleporting = true;
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
             Ray leftRay = new Ray(transform.position, Vector3.left);
             while (x > 1 && drawingGUI)
             {
                 if (!Physics.Raycast(forwardRay, x) && !Physics.Raycast(leftRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.forward * ((float)x * Mathf.Sqrt(2) / 2));
                     transform.Translate(Vector3.left * ((float)x * Mathf.Sqrt(2) / 2));
                     drawingGUI = false;
@@ -166,12 +168,14 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
         }
         else if (drawingGUI && w && d)
         {
+            teleporting = true;
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
             Ray rightRay = new Ray(transform.position, Vector3.right);
             while (x > 1 && drawingGUI)
             {
-                if (!Physics.Raycast(forwardRay, x) && !Physics.Raycast(rightRay, x)) 
+                if (!Physics.Raycast(forwardRay, x) && !Physics.Raycast(rightRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.forward * ((float)x * Mathf.Sqrt(2) / 2));
                     transform.Translate(Vector3.right * ((float)x * Mathf.Sqrt(2) / 2));
                     drawingGUI = false;
@@ -182,12 +186,14 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
         }
         else if (drawingGUI && s && a)
         {
+            teleporting = true;
             Ray backRay = new Ray(transform.position, Vector3.back);
             Ray leftRay = new Ray(transform.position, Vector3.left);
             while (x > 1 && drawingGUI)
             {
-                if (!Physics.Raycast(backRay, x) && !Physics.Raycast(leftRay, x)) 
+                if (!Physics.Raycast(backRay, x) && !Physics.Raycast(leftRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.back * ((float)x * Mathf.Sqrt(2) / 2));
                     transform.Translate(Vector3.left * ((float)x * Mathf.Sqrt(2) / 2));
                     drawingGUI = false;
@@ -198,12 +204,14 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
         }
         else if (drawingGUI && s && d)
         {
+            teleporting = true;
             Ray backRay = new Ray(transform.position, Vector3.back);
             Ray rightRay = new Ray(transform.position, Vector3.right);
             while (x > 1 && drawingGUI)
             {
                 if (!Physics.Raycast(backRay, x) && !Physics.Raycast(rightRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.back * ((float)x * Mathf.Sqrt(2) / 2));
                     transform.Translate(Vector3.right * ((float)x * Mathf.Sqrt(2) / 2));
                     drawingGUI = false;
@@ -214,11 +222,13 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
         }
         else if (drawingGUI && a)
         {
+            teleporting = true;
             Ray leftRay = new Ray(transform.position, Vector3.left);
             while (x > 1 && drawingGUI)
             {
                 if (!Physics.Raycast(leftRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.left * (float)x);
                     drawingGUI = false;
                 }
@@ -229,27 +239,47 @@ public class Teleport_Dash_lvl2 : MonoBehaviour {
         }
         else if (drawingGUI && s)
         {
+            
             Ray backRay = new Ray(transform.position, Vector3.back);
             while (x > 1 && drawingGUI)
             {
                 if (!Physics.Raycast(backRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.back * (float)x);
                     drawingGUI = false;
                 }
-                x = x - 0.1f;
+                x = x - 0.1f;teleporting = true;
             }
             x = 10f;
 
         }
         else if (drawingGUI && d)
         {
+            teleporting = true;
             Ray rightRay = new Ray(transform.position, Vector3.right);
             while (x > 1 && drawingGUI)
             {
                 if (!Physics.Raycast(rightRay, x))
                 {
+                    teleporting = false;
                     transform.Translate(Vector3.right * (float)x);
+                    drawingGUI = false;
+                }
+                x = x - 0.1f;
+            }
+            x = 10f;
+        }
+        else if (drawingGUI && w)
+        {
+            teleporting = true;
+            Ray forwardRay = new Ray(transform.position, Vector3.forward);
+            while (x > 1 && drawingGUI)
+            {
+                if (!Physics.Raycast(forwardRay, x))
+                {
+                    teleporting = false;
+                    transform.Translate(Vector3.forward * (float)x);
                     drawingGUI = false;
                 }
                 x = x - 0.1f;

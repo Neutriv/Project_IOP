@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using System.IO;
 
 public class Death : MonoBehaviour {
 
@@ -9,9 +10,12 @@ public class Death : MonoBehaviour {
     public GameObject ThisObject;
     public int HP;
     public Animator anim;
+    public int xp;
+   // public StreamWriter sw;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        HP = enemy.GetComponent<enemy>().currentHp;
         anim = sprite.GetComponent<Animator>();
 	}
 	
@@ -20,16 +24,23 @@ public class Death : MonoBehaviour {
         HP = enemy.GetComponent<enemy>().currentHp;
         if (HP <= 0)
         {
+         anim.SetBool("Death", true);
+        //jeszcze dodać w playerze ile punktów dostał w tym przejściu.
+        /*
+        string content = string.Empty;
+        using (StreamReader reader = new StreamReader(Application.dataPath + "/data/" + "exp.txt"))
+        {
+            content = reader.ReadToEnd();
+        }
+        int x = System.Convert.ToInt32(content);
+        sw = new StreamWriter(Application.dataPath + "/data/" + "exp.txt");
+        sw.Write((x+xp).ToString());
+        sw.Close();/*/
             
-            StartCoroutine(Wait());
+        //Destroy(sprite);
+        //Destroy(ThisObject);
             
         }
 	}
-
-    IEnumerator Wait()
-    {anim.SetBool("Death", true);
-        yield return new WaitForSeconds(2f);
-        Destroy(ThisObject);
-        StopAllCoroutines();
-    }
+  
 }
