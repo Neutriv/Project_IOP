@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Level/poziom4.unity
+- path: Assets/Level/menu.unity
   isLoaded: 1
   isActive: 1
