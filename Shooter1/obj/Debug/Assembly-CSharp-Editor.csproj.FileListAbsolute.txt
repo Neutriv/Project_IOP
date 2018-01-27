@@ -67,3 +67,5 @@ C:\Users\student\Documents\GitHub\Project_IOP\Shooter1\Temp\bin\Debug\UnityEdito
 C:\Users\student\Documents\GitHub\Project_IOP\Shooter1\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
 C:\Users\student\Documents\GitHub\Project_IOP\Shooter1\obj\Debug\Assembly-CSharp-Editor.dll
 C:\Users\student\Documents\GitHub\Project_IOP\Shooter1\obj\Debug\Assembly-CSharp-Editor.pdb
+C:\Users\Szymon\Desktop\ostatecznagra\Project_IOP-Ola\Shooter1\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
+C:\Users\Szymon\Desktop\ostatecznagra\Project_IOP-Ola\Shooter1\obj\Debug\Assembly-CSharp-Editor.dll

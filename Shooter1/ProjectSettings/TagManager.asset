@@ -15,6 +15,7 @@ TagManager:
   - UI
   - HealthBarAmmount
   - NPC
+  - ammo
   layers:
   - Default
   - TransparentFX

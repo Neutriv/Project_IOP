@@ -1,21 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//using System.IO;
 
 public class Player : MonoBehaviour
 {
+	
+    public bool isAmmo = false;
+    public GameObject lose;
+    public RuntimeAnimatorController silver, red, gold;
     public bool canShoot = true;
     public bool shooting_off = false;
 
-    public int skill_point = 0;
-    public bool dash_lvl1 = false;
-    public bool dash_lvl2 = false;
-    public bool Immaterial_lvl1 = false;
-    public bool Immaterial_lvl2 = false;
-    public bool Heal_lvl1 = false;
-    public bool Heal_lvl2 = false;
+    public int skill_point;
+    public bool dash_lvl1;
+    public bool dash_lvl2;
+    public bool Immaterial_lvl1;
+    public bool Immaterial_lvl2;
+    public bool Heal_lvl1;
+    public bool Heal_lvl2;
+    public bool dmg;
 
+   // StreamWriter sw;
     public int maxHp;
     public int currentHp;
     public bool isD;
@@ -47,61 +55,140 @@ public class Player : MonoBehaviour
     public GameObject AmmoTextField;
     public GameObject HealthUIAmmount;
 
-
+    public int gainedXp = 0;
     public float speed = 0.1f;
 
     // Use this for initialization
     void Start()
     {
+
         currentHp = maxHp;
         myRig = GetComponent<Rigidbody>();
         animator = gunpoconiewiem.GetComponent<Animator>();
         bron = new rangedWeapons();
         
+        skill_point = 1;
+        dash_lvl1 = false;
+        dash_lvl2 = false;
+        Immaterial_lvl1 = false;
+        Immaterial_lvl2 = false;
+        Heal_lvl1 = false;
+        Heal_lvl2 = false;
+        dmg = true;
+
+        //zczytuje wartość dla dash i tp
+
+        if (PlayerPrefs.GetInt("dash") == 1)
+        {
+            dash_lvl1 = true;
+        }
+        if (PlayerPrefs.GetInt("teleport") == 1)
+        {
+            dash_lvl1 = false;
+            dash_lvl2 = true;
+        }
+
+        //zczytuje wartość dla heal 1 i 2
+
+        if (PlayerPrefs.GetInt("heal1") == 1)
+        {
+            Heal_lvl1 = true;
+        }
+        if (PlayerPrefs.GetInt("heal2") == 1)
+        {
+            Heal_lvl1 = false;
+            Heal_lvl2 = true;
+        }
+
+        //zczytuje wartość dla immaterial 1 i 2
+        if (PlayerPrefs.GetInt("immaterial1") == 1)
+        {
+            Immaterial_lvl1 = true;
+        }
+        if (PlayerPrefs.GetInt("immaterial2") == 1)
+        {
+            Immaterial_lvl1 = false;
+            Immaterial_lvl2 = true;
+        }
+
+        //zczytuje wartość currentSkin aby ustawić animatora
+        if (PlayerPrefs.GetInt("currentskin") == 0)
+        {
+
+            animator.runtimeAnimatorController = silver as RuntimeAnimatorController;
+        }
+        else if (PlayerPrefs.GetInt("currentskin") == 1)
+        {
+            animator.runtimeAnimatorController = red as RuntimeAnimatorController;
+        }
+        else if (PlayerPrefs.GetInt("currentskin") == 2)
+        {
+            animator.runtimeAnimatorController = gold as RuntimeAnimatorController;
+        }
+
+
+
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (skill_point > 0)
+    {   
+
+        if(currentHp <=0)
         {
-            if (Input.GetKeyUp(KeyCode.Alpha1) && !dash_lvl1)
-            {
-                dash_lvl1 = true;
-                skill_point = skill_point - 1;
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha1) && !dash_lvl1)
-            {
-                dash_lvl1 = false;
-                dash_lvl2 = true;
-                skill_point = skill_point - 1;
-            }
-
-            if (Input.GetKeyUp(KeyCode.Alpha1) && !Immaterial_lvl1)
-            {
-                Immaterial_lvl1 = true;
-                skill_point = skill_point - 1;
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha1) && !Immaterial_lvl2)
-            {
-                Immaterial_lvl1 = false;
-                Immaterial_lvl2 = true;
-                skill_point = skill_point - 1;
-            }
-
-            if (Input.GetKeyUp(KeyCode.Alpha1) && !Heal_lvl1)
-            {
-                Heal_lvl1 = true;
-                skill_point = skill_point - 1;
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha1) && !Heal_lvl2)
-            {
-                Heal_lvl1 = false;
-                Heal_lvl2 = true;
-                skill_point = skill_point - 1;
-            }
-
+            lose.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Return))
+                SceneManager.LoadScene("menu", LoadSceneMode.Single);
         }
+        
+        //animator
+        if (currentHp == 0)
+        {
+            animator.SetBool("Death", true);
+            Death(); //jak umiera
+        }
+        if(gameObject.GetComponent<Dash>().dashing == true)
+        {
+            animator.SetBool("Dash", true);
+        }
+        if (gameObject.GetComponent<Dash>().dashing != true)
+        {
+            animator.SetBool("Dash", false);
+        }
+
+        if (gameObject.GetComponent<Teleport_Dash_lvl2>().teleporting == true)
+        {
+            animator.SetBool("Teleport", true);
+        }
+        if (gameObject.GetComponent<Teleport_Dash_lvl2>().teleporting != true)
+        {
+            animator.SetBool("Teleport", false);
+        }
+
+        if (gameObject.GetComponent<Immaterial>().invincible == true)
+        {
+            //invincible
+        }
+        if (gameObject.GetComponent<Immaterial>().invincible != true)
+        {
+            //invincible
+        }
+
+        if (gameObject.GetComponent<Immaterial_lvl2>().invincibleRainbow == true)
+        {
+            //invincible
+        }
+        if (gameObject.GetComponent<Immaterial_lvl2>().invincibleRainbow != true)
+        {
+            //invincible
+        }
+
+       
+
+
+
+
+
         if (currentHp > maxHp)
         {
             currentHp = maxHp;
@@ -109,17 +196,12 @@ public class Player : MonoBehaviour
 
         GameObject Obiekt = GameObject.Find("Player");
         Dash dash = Obiekt.GetComponent<Dash>();
-        /*
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * (speed / 2));
-
-        }
         
-        */
 
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = true;
+            animator.SetBool("Run", true);
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
             Ray leftRay = new Ray(transform.position, Vector3.left);
             if (!Physics.Raycast(forwardRay, 4 * speed))
@@ -135,6 +217,8 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = false;
+            animator.SetBool("Run", true);
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
             Ray rightRay = new Ray(transform.position, Vector3.right);
             if (!Physics.Raycast(forwardRay, 4 * speed))
@@ -148,6 +232,9 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && dash.allowkey)
         {
+
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = true;
+            animator.SetBool("Run", true);
             Ray backRay = new Ray(transform.position, Vector3.back);
             Ray leftRay = new Ray(transform.position, Vector3.left);
             if (!Physics.Raycast(backRay, 6 * speed))
@@ -161,6 +248,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = false;
+            animator.SetBool("Run", true);
             Ray backRay = new Ray(transform.position, Vector3.back);
             Ray rightRay = new Ray(transform.position, Vector3.right);
             if (!Physics.Raycast(backRay, 6 * speed))
@@ -175,6 +264,8 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.W) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = false;
+            animator.SetBool("Run", true);
             Ray forwardRay = new Ray(transform.position, Vector3.forward);
             if (!Physics.Raycast(forwardRay, 4 * speed))
             {
@@ -184,6 +275,8 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.S) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = false;
+            animator.SetBool("Run", true);
             Ray backRay = new Ray(transform.position, Vector3.back);
             if (!Physics.Raycast(backRay, 6 * speed))
             {
@@ -193,6 +286,8 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.A) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = true;
+            animator.SetBool("Run", true);
             Ray leftRay = new Ray(transform.position, Vector3.left);
             if (!Physics.Raycast(leftRay, 4 * speed))
             {
@@ -202,6 +297,8 @@ public class Player : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.D) && dash.allowkey)
         {
+            gunpoconiewiem.GetComponent<SpriteRenderer>().flipX = false;
+            animator.SetBool("Run", true);
             Ray rightRay = new Ray(transform.position, Vector3.right);
             if (!Physics.Raycast(rightRay, 4 * speed))
             {
@@ -210,12 +307,9 @@ public class Player : MonoBehaviour
         }
 
      
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-               || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-            animator.SetBool("Run", true);
-
-        else
+        
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A)
+               || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
             animator.SetBool("Run", false);
 
         if (Input.GetMouseButtonDown(0))
@@ -273,11 +367,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("projectile"))
+        if (other.CompareTag("ammo"))
         {
+            isAmmo = true;
+        }
+        else
+            isAmmo = false;
+        if (dmg)
+        {
+            if (other.CompareTag("projectile"))
+            {
 
-            if (isD != true)
-                isD = true;
+                if (isD != true)
+                    isD = true;
+            }
         }
 
         if (other.CompareTag("Rival"))
@@ -296,4 +399,10 @@ public class Player : MonoBehaviour
 
 
     }
+    public void Death()
+    {
+
+    }
+
+    
 }
